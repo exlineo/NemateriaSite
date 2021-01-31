@@ -1,0 +1,7 @@
+{
+    "titre": "Nemateria",
+    "soustitre": "Solution de valorisation de collections numérisées.",
+    "separateur": " || ",
+    "intro": "<p>Nemateria est un projet développé par la société <a href='https://exlineo.com' target='_blank'>EXLINEO</a> sur un financement de la région Nouvelle Aquitaine.</p><p>Il offre des outils gratuits et open source pour gérer et partagées des collections numérisées.</p><p>Le code est déposé sur <a href='https://github.com/' target='_blank'>GITHUB.COM</a> sous licence GPL3.</p>.",
+    "images": [{ "img": "/assets/images/logos/logo-naq.png", "titre": "Région Nouvelle Aquitaine", "lien": "https://www.nouvelle-aquitaine.fr" }]
+}

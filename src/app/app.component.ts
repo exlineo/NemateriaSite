@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent {
   
   title = 'Nemateria';
 
-  constructor(private route:Router){
+  constructor(private route:Router, public dataServ:DataService){
 
   }
 }

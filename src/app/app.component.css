@@ -10,10 +10,12 @@ hr {
 
 article hr:nth-child(1) {
     height: 10vh;
+    width: 100%;
 }
 
 article hr:nth-child(3) {
     height: 20vh;
+    width: 100%;
 }
 
 img {

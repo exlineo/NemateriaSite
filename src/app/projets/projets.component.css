@@ -13,9 +13,16 @@ section {
     width: 100%;
     overflow: hidden;
     overflow-y: auto;
+    display: flex;
+}
+
+div {
+    width: 100%;
+    margin: auto;
 }
 
 footer {
-    box-sizing: border-box;
-    border-right: yellow solid 40px;
+    border-right: yellow solid 100px;
+    margin: 0 -50px;
+    width: calc(100% + 100px);
 }

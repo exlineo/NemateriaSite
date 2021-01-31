@@ -10,6 +10,14 @@ section {
     overflow-y: auto;
 }
 
+section>header {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
 footer>article {
     border-top: dashed thin black;
     padding-left: 20px;

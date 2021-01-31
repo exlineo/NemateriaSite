@@ -36,6 +36,7 @@ main {
 
 main>* {
     height: 100vh;
+    box-sizing: border-box;
 }
 
 main>aside {
@@ -73,16 +74,29 @@ footer {
 
 app-presentation {
     width: 35vw;
+    padding: 0 50px;
 }
 
 app-projets {
     width: 45vw;
     border-left: dashed thin black;
+    padding: 0 50px;
+}
+
+hr {
+    border: none;
+    height: 0;
+    width: 80%;
+    border-bottom: dashed black thin;
+    margin: 20px 0 30px;
 }
 
 .noir {
     color: white;
     background-color: black;
+    margin-left: -20px;
+    border-left: yellow solid 30px;
+    width: calc(100% + 20px);
 }
 
 .noir a {
