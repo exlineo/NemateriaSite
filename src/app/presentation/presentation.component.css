@@ -1,0 +1,23 @@
+header {
+    height: 10vh;
+    width: 100%;
+}
+
+section {
+    height: 80vh;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+footer>article {
+    border-top: dashed thin black;
+    padding-left: 20px;
+    height: 100%;
+    display: flex;
+    width: 150px;
+}
+
+footer>article>a {
+    margin: auto 5px;
+}

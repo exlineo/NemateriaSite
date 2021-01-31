@@ -1,0 +1,21 @@
+header {
+    height: 10vh;
+    width: 100%;
+}
+
+header>img {
+    float: right;
+    max-width: 300px;
+}
+
+section {
+    height: 80vh;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+footer {
+    box-sizing: border-box;
+    border-right: yellow solid 40px;
+}

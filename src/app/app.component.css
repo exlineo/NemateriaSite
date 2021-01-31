@@ -1,0 +1,36 @@
+header>article {
+    width: 50%;
+}
+
+hr {
+    border: none;
+    background-color: yellow;
+    margin: 0;
+}
+
+article hr:nth-child(1) {
+    height: 10vh;
+}
+
+article hr:nth-child(3) {
+    height: 20vh;
+}
+
+img {
+    max-width: 100%;
+    margin: 15px auto;
+}
+
+footer>article {
+    display: flex;
+}
+
+p {
+    padding: 0 25px;
+    margin: auto;
+    width: 100%;
+}
+
+footer a {
+    color: white;
+}

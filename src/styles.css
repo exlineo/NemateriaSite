@@ -1,1 +1,94 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    font-size: 15px;
+    font-family: 'Noto Serif SC', serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    transition: all .3s ease;
+    color: teal;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+main>* {
+    height: 100vh;
+}
+
+main>aside {
+    display: flex;
+    flex-flow: column wrap;
+    width: 20vw;
+    padding: 0 15px;
+}
+
+main>aside>* {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+}
+
+main>aside>header {
+    height: 25vh;
+}
+
+main>aside>section {
+    height: 65vh;
+    padding-top: 80px;
+    border-right: dashed thin black;
+}
+
+main>aside>footer {
+    background-color: black;
+    color: white;
+}
+
+footer {
+    height: 10vh;
+    width: 100%;
+}
+
+app-presentation {
+    width: 35vw;
+}
+
+app-projets {
+    width: 45vw;
+    border-left: dashed thin black;
+}
+
+.noir {
+    color: white;
+    background-color: black;
+}
+
+.noir a {
+    color: white;
+}
+
+.jaune {
+    background-color: yellow;
+}
