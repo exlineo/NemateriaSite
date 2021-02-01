@@ -6,8 +6,8 @@ body {
     margin: 0;
     width: 100vw;
     height: 100vh;
-    font-size: 15px;
-    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 * {
@@ -18,13 +18,22 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Noto Serif SC', serif;
 }
 
 a {
     text-decoration: none;
     transition: all .3s ease;
-    color: teal;
+    color: red;
+}
+
+a>img {
+    float: right;
+    transition: all .3s ease;
+}
+
+a:hover>img {
+    opacity: .7;
 }
 
 main {
@@ -58,13 +67,19 @@ main>aside>header {
 
 main>aside>section {
     height: 65vh;
-    padding-top: 80px;
+    padding-top: 150px;
     border-right: dashed thin black;
+    flex-flow: column wrap;
 }
 
 main>aside>footer {
     background-color: black;
     color: white;
+}
+
+section {
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 footer {
@@ -105,4 +120,12 @@ hr {
 
 .jaune {
     background-color: yellow;
+}
+
+img {
+    width: auto;
+}
+
+.petite {
+    max-width: 150px;
 }

@@ -5,14 +5,22 @@
 </header>
 <section>
     <header [style.backgroundImage]="'url('+dataServ.data.presentation.entete+')'">
-
     </header>
+    <h1>{{ dataServ.data.presentation.titre }}</h1>
+    <h3>{{ dataServ.data.presentation.soustitre }}</h3>
+    <article [innerHTML]="dataServ.data.presentation.intro"></article>
     <article>
+        <ul>
+            <li *ngFor="let i of dataServ.data.presentation.infos">
+                <h3><a [href]="i.lien" target="_blank">{{ i.titre }}</a></h3>
+                <p>{{ i.infos }}</p>
 
+            </li>
+        </ul>
     </article>
 </section>
 <footer>
     <article>
-        <a [href]="'mailto:'+email">contact[at]exlineo.com</a>
+        <a href>Mentions légales</a>
     </article>
 </footer>

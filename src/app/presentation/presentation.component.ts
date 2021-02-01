@@ -7,8 +7,6 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./presentation.component.css']
 })
 export class PresentationComponent implements OnInit {
-  
-  email:string = "contact@exlineo.com";
 
   constructor(public dataServ:DataService) { }
 

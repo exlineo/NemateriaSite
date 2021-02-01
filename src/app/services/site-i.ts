@@ -10,6 +10,10 @@ export interface SiteI {
     };
     presentation: {
         entete:string;
+        titre:string;
+        soustitre:string;
+        intro:string;
+        infos:Array<any>;
     };
     projets: {
         titre:string;

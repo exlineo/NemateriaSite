@@ -11,8 +11,6 @@ header>img {
 section {
     height: 80vh;
     width: 100%;
-    overflow: hidden;
-    overflow-y: auto;
     display: flex;
 }
 
@@ -25,4 +23,14 @@ footer {
     border-right: yellow solid 100px;
     margin: 0 -50px;
     width: calc(100% + 100px);
+}
+
+footer>article {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+footer>article>p {
+    margin: auto;
 }

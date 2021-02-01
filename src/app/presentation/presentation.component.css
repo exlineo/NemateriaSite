@@ -6,8 +6,6 @@ header {
 section {
     height: 80vh;
     width: 100%;
-    overflow: hidden;
-    overflow-y: auto;
 }
 
 section>header {

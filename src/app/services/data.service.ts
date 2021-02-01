@@ -9,6 +9,7 @@ import { SiteI } from '../services/site-i';
 export class DataService {
 
   data:SiteI=<SiteI>{};
+  email:string = "contact@exlineo.com";
 
   constructor(private http:HttpClient) {
     this.getData();

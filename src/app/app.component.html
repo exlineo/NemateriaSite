@@ -19,9 +19,9 @@
                 </article>
             </header>
             <section>
-                <article>
-
+                <article [innerHTML]="dataServ.data.accueil.intro">
                 </article>
+                <a [href]="dataServ.data.accueil.images[0].lien" target="_blank"><img class="petite" [src]="dataServ.data.accueil.images[0].img" [title]="dataServ.data.accueil.images[0].titre" [alt]="dataServ.data.accueil.images[0].titre"></a>
             </section>
             <footer class="noir">
                 <article>
