@@ -1,4 +1,4 @@
-import { Menu } from './Menu.js';
+import { Collection } from './collection.js';
 import { Persistance } from './Persistance.js';
 
 window.addEventListener("load", function() {
@@ -8,5 +8,8 @@ window.addEventListener("load", function() {
 });
 
 function launch() {
-    let m = new Menu(document.querySelector('body>aside>nav'), document.querySelector('body>main'));
+    let persiste = new Persistance(document.querySelector('body>aside>nav'), document.querySelector('body>main'));
+    persiste.getCollections();
+
+    let collections = new Collection();
 };
