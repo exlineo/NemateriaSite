@@ -15,21 +15,29 @@
 <body>
     <aside>
         <a href="/" title="retourner à l'accueil"><img class="logo" src="assets/img/Logo_Nemateria_2021_cube.png" alt="logo Nemateria"></a>
-        <h1>Collections</h1>
         <nav>
+            <h1>Collections <i><img src="assets/img/icones/loupe.svg" class="icone"></i></h1>
         </nav>
+        <section class="collection">
+            <header>
+                <h1>Détails sur la collection</h1>
+            </header>
+            <section></section>
+        </section>
     </aside>
     <main>
+
         <section class="notices">
             <header>
-                <h2>Notices de la collection</h2>
+                <h1>Notices de la collection</h1>
             </header>
             <section>
             </section>
         </section>
-        <section class="collection">
-            <h2>Détails sur la collection</h2>
-            <section></section>
+        <section class="notice">
+            <header>
+                <i><img src="assets/img/icones/croix.svg" title="Fermer la fenêtre" alt="Icône fermer la fenêtre" class="icone" onclick="(function(e){console.log(e); e.target.classList.toggle('vu')})()"></i>
+            </header>
         </section>
     </main>
 </body>

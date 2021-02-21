@@ -21,7 +21,6 @@ export class Menu {
      * Lister les collections et créer les liens de menu
      */
     setMenuItems() {
-
             const ul = document.createElement('ul');
             let i = 0;
             // Boucle le menu pour générer les balises
