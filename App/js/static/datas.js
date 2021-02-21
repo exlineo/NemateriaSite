@@ -20,12 +20,12 @@
 //     }
 // ];
 export class Donnees {
-    static collectionP = [];
-    static noticesP = [];
-    static pageP = {};
-    static menuP = [];
+    static collections = [];
+    static notices = [];
+    static page = {};
+    static menu = [];
 
-    contactP = {
+    contact = {
         mail: "simplon@fabriquenumerique.fr",
         sujet: "Merci de remplir les champs requis",
         alerte: "Attention, il manque des informations dans votre formulaire",

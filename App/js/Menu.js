@@ -41,13 +41,11 @@ export class Menu {
                     ul.appendChild(li);
                     // Gérer le clic sur un lien
                     a.onclick = (i) => {
-                        console.log(i);
                         this.setCollection(i);
                     };
                     // li.onclick = li.dispatchEvent(this.collecEvent);
                     ++i;
                 });
-            console.log(ul);
             this.nav.appendChild(ul);
         }
         // Charger un template HTML
@@ -67,13 +65,11 @@ export class Menu {
         }
         // Ecrire un template dans le DOM
     getTemplate(p, i) {
-        console.log(p);
         fetch('./pages/' + p.lien)
             .then(h => h.text())
             .then(html => {
                 this.corps.innerHTML = html;
-                Donnees.pageP = { index: i, alias: p.alias };
-                console.log(this, Donnees.pageP);
+                Donnees.page = { index: i, alias: p.alias };
             }).catch(er => console.log(er));
     }
 }

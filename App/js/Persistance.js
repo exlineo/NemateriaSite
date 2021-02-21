@@ -30,8 +30,7 @@ export class Persistance {
      */
     setData(i, d) {
             localStorage.setItem(i, JSON.stringify(d));
-            Donnees.collectionsP = d;
-            console.log(Donnees, i, d);
+            Donnees[i] = d;
         }
         /**
          * Renvoyer des données du localStorage
@@ -47,7 +46,6 @@ export class Persistance {
         fetch(PARAMS.SERV + 'collections', PARAMS.HEAD)
             .then(d => d.json())
             .then(j => {
-                console.log(j);
                 this.setData('collections', j);
                 this.setMenuData();
             })
@@ -60,7 +58,7 @@ export class Persistance {
          */
     setMenuData() {
         this.menu.data = new Array();
-        Donnees.collectionsP.forEach(
+        Donnees.collections.forEach(
             m => this.menu.data.push({
                 titre: m.titre,
                 alias: m.alias,

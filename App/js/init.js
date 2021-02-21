@@ -11,5 +11,5 @@ function launch() {
     let persiste = new Persistance(document.querySelector('body>aside>nav'), document.querySelector('body>main'));
     persiste.getCollections();
 
-    let collections = new Collection();
+    let collections = new Collection(document.querySelector('.notices>section'), document.querySelector('.collection>section'));
 };

@@ -10,10 +10,10 @@ body {
     font-family: 'Raleway', sans-serif;
     font-variation-settings: 'wght' 500;
     font-weight: 500;
-    font-size: 12px;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    font-size: 21px;
 }
 
 body {
@@ -28,6 +28,7 @@ body>* {
     height: 100vh;
     border-right: dashed black 1px;
     font-family: 'Economica', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body>main>section {
@@ -57,6 +58,10 @@ h2 {
     text-align: center;
 }
 
+h3 {
+    margin: 0 5px;
+}
+
 body>aside {
     width: 20vw;
     flex-flow: column wrap;
@@ -70,9 +75,16 @@ body>main {
 
 body>main>section {
     flex-flow: column wrap;
-    width: 50vw;
     height: 100%;
     background-color: white;
+}
+
+body>main>section:nth-child(1) {
+    width: 65%;
+}
+
+body>main>section:nth-child(2) {
+    width: 35%;
 }
 
 a {
@@ -113,26 +125,120 @@ nav a {
 
 /* NOTICES */
 
-.noticesCollection,
-.noticesCollection>section {
-    flex-flow: column wrap;
+.notices {
+    flex-flow: column nowrap;
+    overflow-y: auto;
 }
 
-.noticesCollection>section>article {
+.notices>section {
     display: flex;
-    min-height: 200px;
-    width: 100%;
-    transition: all .3s ease;
-    background-position: center;
-    background-image: cover;
-    background-size: 100%;
-    background-color: aliceblue;
-    cursor: pointer;
+    flex-flow: row wrap;
 }
 
-.noticesCollection>section>article:hover {
-    background-size: 110%;
+.notices>section>article {
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 200px;
+    width: 50%;
+    box-sizing: border-box;
+    background: 50% no-repeat;
+    background-size: 100%;
+    transition: all .3s ease;
+    position: relative;
+}
+
+.notices a {
+    display: flex;
+    background: 50% no-repeat;
+    background-size: 100%;
+    transition: all .3s ease;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* margin-top: -100%; */
+}
+
+.notices article:hover {
+    background-size: 120%;
+}
+
+.notices a>span {
+    display: flex;
+    margin: auto;
+    padding: 20px 25px;
+    background-color: rgba(0, 0, 0, .7);
+    border-radius: 15%;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.notices a>span>img {
+    width: 24px;
+    height: 24px;
+    margin: auto;
+}
+
+.notices a:hover>span {
+    opacity: 1;
+}
+
+.notices article>p {
+    color: white;
+    text-shadow: 0px 1px 3px black;
+    padding: 10px;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    bottom: 0;
 }
 
 
 /* COLLECTIONS */
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 999px) {
+    .notices>section>article {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1400px) {
+    .notices>section>article {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1401px) {
+    .notices>section>article {
+        width: 33.33%;
+    }
+}
+
+
+/* DIVERS */
+
+::-webkit-scrollbar-button {
+    /* Boutons */
+    height: 26px;
+    background: yellow 1px 50% no-repeat, #bfb6a3 0 0 no-repeat;
+}
+
+::-webkit-scrollbar-button:increment {
+    /* Bouton pour descendre */
+    background-position: -19px 50%;
+}
+
+::-webkit-scrollbar-button:horizontal {
+    /* Boutons horizontaux */
+    width: 26px;
+    background: yellow 50% 1px no-repeat, #bfb6a3 0 0 no-repeat;
+}
+
+::-webkit-scrollbar-button:horizontal:increment {
+    /* Bouton pour aller à droite */
+    background-position: 50% -19px;
+}
