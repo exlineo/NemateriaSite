@@ -63,7 +63,8 @@ h3 {
 
 body>aside {
     width: 20vw;
-    flex-flow: column wrap;
+    display: flex;
+    flex-flow: column nowrap;
 }
 
 body>main {
@@ -88,9 +89,15 @@ a {
 
 /* NAVIGATION PRINCIPALE */
 
+body>aside>section {
+    justify-content: space-around;
+    width: 100%;
+    height: 70vh;
+}
+
 nav {
     width: 100%;
-    height: 40%;
+    height: 30vh;
 }
 
 nav>ul>li {
@@ -110,6 +117,11 @@ nav a {
     text-transform: uppercase;
 }
 
+aside>input {
+    margin: 30px auto;
+    opacity: 1;
+}
+
 
 /* CLASSES GENERIQUES */
 
@@ -120,12 +132,28 @@ nav a {
 
 section>header {
     min-height: 60px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+header>h1 {
+    display: block;
+    margin: 0;
+    padding: 20px 0 10px;
 }
 
 i {
     float: right;
     margin: 20px;
     cursor: pointer;
+}
+
+input {
+    transition: all .3s ease;
+    border: 1px solid yellowgreen;
+    border-bottom: 1px solid black;
+    padding: 10px 16px;
+    margin: auto;
 }
 
 
@@ -139,12 +167,25 @@ i {
 .notices>header {
     background-color: black;
     color: #fff;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    margin-bottom: 0;
 }
 
-.notices>header>h1 {
-    display: block;
+.notices>header>h1,
+.notices>header>div>h2 {
     margin: 0;
     padding: 20px 0 10px;
+    width: auto;
+}
+
+.notices>header>div {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 50%;
 }
 
 .notices>section {
@@ -214,18 +255,44 @@ i {
 }
 
 .collection>header {
-    background-color: yellow;
     margin-bottom: 30px;
-}
-
-.collection>header>h1 {
-    display: block;
-    margin: 0;
-    padding: 20px 0 10px;
 }
 
 .collection>section {
     padding: 10px 30px;
+}
+
+
+/* SERIES */
+
+.series {
+    margin-bottom: 30px;
+}
+
+.series button {
+    background-color: yellow;
+    padding: 8px 12px;
+    margin: 0 5px;
+    color: black;
+    transition: background-color .3s ease;
+}
+
+.series button:hover {
+    background-color: yellowgreen;
+}
+
+
+/* NOTICE */
+
+.notice {
+    visibility: hidden;
+    position: absolute;
+    left: 100vw;
+    width: 80vw;
+    height: calc(100vh - 60px);
+    top: 60px;
+    background-color: rgba(255, 255, 255, .9);
+    transition: all .3s ease;
 }
 
 
@@ -240,6 +307,42 @@ i {
 
 .icone:hover {
     transform: rotate(30deg);
+}
+
+.jaune {
+    transition: all .3s ease;
+    background-color: yellow;
+    color: black;
+}
+
+.jaune:hover {
+    background-color: yellowgreen;
+}
+
+.noir {
+    transition: all .3s ease;
+    background-color: black;
+    color: white;
+}
+
+.noir:hover {
+    background-color: #363636;
+}
+
+.vu {
+    left: 20vw;
+    visibility: visible;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.invisible {
+    visibility: hidden;
+    margin-bottom: 0;
+    opacity: 0;
+    transition: all .3s ease;
 }
 
 
@@ -272,25 +375,6 @@ i {
     .notices>section>article {
         width: 100vw;
     }
-}
-
-
-/* NOTICE */
-
-.notice {
-    visibility: hidden;
-    position: absolute;
-    left: 100vw;
-    width: 80vw;
-    height: calc(100vh - 60px);
-    top: 60px;
-    background-color: rgba(255, 255, 255, .9);
-    transition: all .3s ease;
-}
-
-.vu {
-    left: 20vw;
-    visibility: visible;
 }
 
 @media screen and (min-width: 1000px) and (max-width: 1400px) {

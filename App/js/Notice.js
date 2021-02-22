@@ -22,4 +22,13 @@ export class Notice {
         }
         return o;
     }
+    setVideo() {
+
+    }
+    setAudio() {
+
+    }
+    setImage() {
+
+    }
 }

@@ -26,16 +26,14 @@ export class Menu {
             // Boucle le menu pour générer les balises
             this.data.forEach(
                 m => {
+                    console.log(m);
                     const li = document.createElement('li');
                     const a = document.createElement('a');
-                    // a.setAttribute('href', '');
-                    // a.setAttribute('click', `this.getTemplate('${m.lien}')`)
-                    // li.onclick = () => this.getTemplate(m, i);
-                    // 
+
                     a.setAttribute('title', m.infos);
                     a.setAttribute('data-index', i);
-                    a.textContent = m.titre;
-                    // a.addEventListener('mousedown', this.getTemplate(m.lien));
+                    a.innerHTML = `<strong>${m.titre}</strong><br><em>(fonds ${m.data.fonds})</em>`;
+
                     li.appendChild(a);
                     ul.appendChild(li);
                     // Gérer le clic sur un lien
@@ -59,7 +57,7 @@ export class Menu {
     setCollection(i) {
             i.preventDefault();
             // Créer un événement pour envoyer l'information qu'une case a été cochée avec son ID (cf. Mecanique)
-            const colEv = new CustomEvent('collection', { detail: i.target.dataset.index });
+            const colEv = new CustomEvent('collection', { detail: i.currentTarget.dataset.index });
             dispatchEvent(colEv);
         }
         // Ecrire un template dans le DOM

@@ -8,13 +8,17 @@ export class Collection {
     index;
     collection = {};
     n; // Notices HTML
+    s; // L'entête des notices pour ecrires les séries
     c; // Collection HTML
     o; // Notice HTML à afficher
+    f; // Champ de filter pour rechercher dans les notices
 
-    constructor(n, c, o) {
+    constructor(n, s, c, o, f) {
             this.n = n;
+            this.s = s;
             this.c = c;
             this.o = o;
+            this.f = f;
             addEventListener('collection', (e) => {
                 this.index = parseInt(e.detail);
                 this.collection = Donnees.collections[this.index];
@@ -22,7 +26,6 @@ export class Collection {
                 this.loadNotices();
                 // Afficher la collection
                 this.setCollection();
-                console.log("Evénement reçu", this.index, this.collection);
             });
             /**
              * Fermer la notice avec la croix
@@ -31,6 +34,14 @@ export class Collection {
                 this.o.classList.toggle('vu');
                 this.notice = null;
             });
+            // Filtrer les notices
+            this.f.addEventListener('input', () => {
+                if (this.f.value.length > 3) {
+                    this.setNotices(this.filtreNotices(this.f.value));
+                } else {
+                    this.setNotices(Donnees.notices);
+                }
+            })
         }
         /**
          * Récupérer les notices de la collection
@@ -41,9 +52,8 @@ export class Collection {
                 .then(d => d.json())
                 .then(n => {
                     Donnees.notices = n;
-                    console.log("Notices chargées", n);
                     // afficher les notices
-                    this.setNotices();
+                    this.setNotices(Donnees.notices);
                 })
                 .catch(e => console.log(e));
         }
@@ -75,13 +85,57 @@ export class Collection {
             u.innerHTML = li;
             ar.appendChild(u);
             this.c.appendChild(ar);
+            this.setSeries();
         }
+        /**
+         * Afficher les séries de la collection
+         */
+    setSeries(){
+        if(this.collection.series && Array.isArray(this.collection.series)){
+            this.s.innerHTML = '';
+            
+            const h = document.createElement('header');
+            const h1 = document.createElement('h1');
+            h1.textContent = "Filtrer par séries";
+            h.className ='jaune';
+            h.appendChild(h1);
+            this.s.appendChild(h);
+
+            const ar = document.createElement('article');
+            this.collection.series.forEach(s => {
+                let b = document.createElement('button');
+                b.textContent = s;
+                ar.appendChild(b);
+                console.log(s);
+                b.addEventListener('click', ()=>{
+                    this.setNotices(this.setNoticesSeriees(s));
+                })
+            });
+            this.s.appendChild(ar);
+        }
+    }
+    /**
+     * Récupérer les notices d'une série
+     * @param {string} s Nom de la série servant de tri
+     */
+    setNoticesSeriees(s){
+        return Donnees.notices.filter(n => n.metadonnees[0].nemateria.serie && n.metadonnees[0].nemateria.serie.serie == s);
+    }
+    filtreNotices(filtre){
+        return Donnees.notices.filter(n => {
+            const f = filtre.toLowerCase();
+            if(n.metadonnees[0].dublincore.title && n.metadonnees[0].dublincore.title.toLowerCase().indexOf(f) !== -1) return n;
+            if(n.metadonnees[0].dublincore.description && n.metadonnees[0].dublincore.description.toLowerCase().indexOf(f) !== -1) return n;
+            if(n.metadonnees[0].dublincore.subject && n.metadonnees[0].dublincore.subject.toString().toLowerCase().indexOf(f) !== -1) return n;
+        });
+            return Donnees.notices;
+    }
         /**
          * Créer les notices à la volée
          */
-    setNotices() {
+    setNotices(notices){
             this.n.innerHTML = '';
-            Donnees.notices.forEach(n => {
+            notices.forEach(n => {
                 const db = n.metadonnees[0].dublincore;
                 const media = n.metadonnees[0].media;
                 const ar = document.createElement('article');
