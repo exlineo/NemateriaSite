@@ -1,4 +1,4 @@
-import { Collection } from './collection.js';
+import { Collection } from './Collection.js';
 import { Persistance } from './Persistance.js';
 
 window.addEventListener("load", function() {

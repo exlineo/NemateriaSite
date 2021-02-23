@@ -1,6 +1,6 @@
 import { Persistance } from './Persistance.js';
 import { Donnees } from './static/datas.js';
-import { Notice } from './notice.js';
+import { Notice } from './Notice.js';
 import PARAMS from './static/params.js';
 
 export class Collection {
@@ -30,7 +30,7 @@ export class Collection {
             /**
              * Fermer la notice avec la croix
              */
-            this.o.querySelector('i').addEventListener('click', () => {
+            this.o.querySelector('.notice>i').addEventListener('click', () => {
                 this.o.classList.toggle('vu');
                 this.notice = null;
             });
@@ -152,9 +152,9 @@ export class Collection {
                 this.n.appendChild(ar);
 
                 ar.addEventListener('click', ()=>{
-                    console.log(this, this.o);
+                    // console.log(this, this.o);
                     this.o.classList.toggle('vu');
-                    this.notice = new Notice(this.o, n);
+                    this.notice = new Notice(this.o, n.metadonnees[0]);
                 })
             });
         }

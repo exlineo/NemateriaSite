@@ -1,34 +1,138 @@
 export class Notice {
-    notice; // Métadonnées de la notice
+    metas; // Métadonnées de la notice
     n; // Elément HTML
 
-    constructor(n) {
-            this.notice = n;
-            console.log(this.notice);
-        }
-        /**
-         * 
-         */
-    setNotice() {
+    constructor(n, metas) {
+            this.n = n;
+            this.media = n.querySelector('#media'); // Element HTML pour afficher le média
+            this.media.innerHTML = '';
 
-    }
-    decortiqueObj(o) {
-        if (Array.isArray(o)) {
-            return o.toString();
-        } else if (typeof o == 'object') {
-            for (let i in o) {
-                this.decortiqueObj(o[i]);
+            this.donnees = n.querySelector('#donnees'); // Element HTML pour lister les données
+            this.donnees.innerHTML = '';
+
+            this.metas = metas; // Métadonnées de la notice
+            console.log(this.metas);
+
+            let f = this.metas.media.Format;
+            if (f.indexOf('image') != -1) {
+                this.setImage(this.metas.media.url);
+            } else if (f.indexOf('video') != -1) {
+                this.setVideo(this.metas.media.url, f);
+            } else if (f.indexOf('audio') != -1) {
+                this.setAudio(this.metas.media.url, f)
+            } else {
+                this.setPdf(this.metas.media.url);
+            }
+
+            // Ecrire les données dans les médias
+            this.setDatas(this.metas.dublincore, "Métadonnées du média");
+
+            for (let n in this.metas.nemateria) {
+                console.log(n);
+                this.setDatas(this.metas.nemateria[n], "Nemateria : " + n);
             }
         }
-        return o;
-    }
-    setVideo() {
+        /**
+         * Afficher les informations du document
+         * @param {Element} doc Element HTML du document
+         */
+    setMedia() {
+            const ar = document.createElement('article');
+            const h3 = document.createElement('h3');
+            h3.textContent = "Informations sur le média";
+            ar.appendChild(h3);
+            ar.appendChild(this.decortiqueObj(this.metas.media));
+            this.media.appendChild(ar);
+        }
+        /**
+         * Afficher les métadonnées
+         */
+    setDatas(o, t) {
+            const ar = document.createElement('article');
+            const h3 = document.createElement('h3');
+            h3.textContent = t;
+            ar.appendChild(h3);
+            ar.appendChild(this.decortiqueObj(o));
+            this.donnees.appendChild(ar);
+        }
+        /**
+         * Afficher les séquences d'un document multimédia
+         */
+    setSequences() {
 
-    }
-    setAudio() {
+        }
+        /**
+         * Décomposer un objet et ses enfants
+         * @param {Object} o Objet présumé à décortiquer
+         * @param {*} e Clé potentielle d'un objet décortiqué
+         */
+    decortiqueObj(o, e = null) {
+            const ul = document.createElement('ul');
+            for (let i in o) {
+                console.log(i, o[i]);
+                if (typeof o[i] == 'object') {
+                    this.decortiqueObj(o[i], i);
+                } else {
+                    let li = document.createElement('li');
+                    li.textContent = `${i} : ${o[i].toString()}`;
+                    ul.appendChild(li);
+                }
+            };
+            // if (Array.isArray(o)) {
+            //     if (e) {
+            //         let li = document.createElement('li');
+            //         li.textContent = `${e} : ${o.toString()}`;
+            //         ul.appendChild(li);
+            //     };
+            // } else if (typeof o == 'object') {
 
+            // } else {
+            //     if (e) {
+            //         let li = document.createElement('li');
+            //         li.textContent = `${e} : ${o}`;
+            //         ul.appendChild(li);
+            //     };
+            // }
+            // ul.appendChild(li);
+            return ul;
+        }
+        /**
+         * Afficher une vidéo
+         * @param {string} url Lien de la vidéo
+         * @param {string} f Format de la vidéo
+         */
+    setVideo(url, f) {
+        const ar = document.createElement('article');
+        let vid = `<video autoplay class="media">
+                    <source src="${url}" type="${f}">
+                    Votre navigateur ne supporte pas ce format vidéo
+                </video>`;
+        ar.innerHTML = vid;
+        this.metas.appendChild(ar);
+        this.setMedia();
     }
-    setImage() {
+    setAudio(url, f) {
+            const ar = document.createElement('article');
+            let aud = `<audio controls src="${url}" class="media">
+                            Votre navigateur ne supporte pas ce format audio
+                        </audio>`;
 
+            ar.innerHTML = aud;
+            this.metas.appendChild(ar);
+            this.setMedia();
+        }
+        /**
+         * Afficher une image
+         * @param {string} url Lien vers le document
+         */
+    setImage(url) {
+        const ar = document.createElement('ar');
+        let img = new Image();
+        img.src = url;
+        img.className = 'media';
+        ar.appendChild(img);
+        this.media.appendChild(ar);
+        // let img = `<img src="${url}" class="media">`;
+        this.setMedia();
     }
 }

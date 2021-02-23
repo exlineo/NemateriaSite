@@ -12,7 +12,7 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    font-size: 21px;
+    font-size: 16px;
 }
 
 body {
@@ -46,7 +46,7 @@ h4 {
 }
 
 h1 {
-    font-size: 26px;
+    font-size: 24px;
     width: 100%;
     text-align: center;
 }
@@ -58,6 +58,7 @@ h2 {
 }
 
 h3 {
+    font-size: 18px;
     margin: 0 5px;
 }
 
@@ -80,10 +81,15 @@ body>main>section {
 }
 
 a {
-    color: red;
+    color: green;
     text-decoration: none;
-    font-weight: none;
+    font-weight: bold;
     cursor: pointer;
+    transition: all .3s ease;
+}
+
+em {
+    font-size: .9em;
 }
 
 
@@ -101,12 +107,21 @@ nav {
 }
 
 nav>ul>li {
+    width: 100%;
     list-style: none;
     margin: 10px;
     padding: 6px 12px;
+    border-bottom: 1px dashed black;
+    transition: all .3s ease;
+}
+
+nav>ul>li:hover {
+    background-color: rgba(255, 255, 0, .6);
+    color: black;
 }
 
 nav>ul {
+    width: 100%;
     margin: 0;
     padding: 0;
     display: flex;
@@ -115,6 +130,7 @@ nav>ul {
 
 nav a {
     text-transform: uppercase;
+    display: block;
 }
 
 aside>input {
@@ -291,12 +307,46 @@ input {
     width: 80vw;
     height: calc(100vh - 60px);
     top: 60px;
-    background-color: rgba(255, 255, 255, .9);
+    background-color: rgba(255, 255, 255, .95);
     transition: all .3s ease;
+}
+
+.notice>i {
+    position: absolute;
+    z-index: 1;
+}
+
+.notice>i>img {
+    color: white;
+    /* box-shadow: 0px 0px 4px black; */
+    filter: drop-shadow(0px 0px 3px black);
+}
+
+.notice>section {
+    display: flex;
+}
+
+.notice>section.media {
+    flex-flow: column nowrap;
+}
+
+.notice>section.donnees {
+    flex-flow: row wrap;
 }
 
 
 /* DIVERS */
+
+.metas {
+    height: auto;
+    width: 100%;
+}
+
+img.media {}
+
+video.media {}
+
+audio.video {}
 
 .icone {
     width: 24px;
@@ -352,7 +402,6 @@ input {
     body {
         overflow-y: auto;
     }
-    body,
     body>main {
         flex-flow: column nowrap;
         width: 100vw;
