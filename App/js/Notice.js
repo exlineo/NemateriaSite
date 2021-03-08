@@ -1,6 +1,7 @@
 export class Notice {
     metas; // Métadonnées de la notice
     n; // Elément HTML
+    va; // Au cas ou un média de type vidéo ou audio soient créés
 
     constructor(n, metas) {
             this.n = n;
@@ -57,7 +58,36 @@ export class Notice {
          * Afficher les séquences d'un document multimédia
          */
     setSequences() {
+            console.log(this.metas.nemateria.sequences);
+            if (this.metas.nemateria.sequences) {
+                const s = this.metas.nemateria.sequences;
 
+                const ar = document.createElement('article');
+                const h3 = document.createElement('h3');
+                h3.textContent = "Séquences du média";
+                ar.appendChild(h3);
+                const time = s.time_code.indexOf(',') != -1 ? s.time_code.split(',') : [];
+                const seq = s.sequence.indexOf(',') != -1 ? s.sequence.split(',') : [];
+                const duree = s.duree_sequence.indexOf(',') != -1 ? s.duree_sequence.split(',') : [];
+                const resume = s.resume_sequence.indexOf(',') != -1 ? s.resume_sequence.split(',') : [];
+
+                for (let i = 0; i < time.length; ++i) {
+                    let p = document.createElement('p');
+                    let a = document.createElement('a');
+                    a.classList.add('sequence');
+                    a.innerHTML = `
+                        <span>${seq[i] ? seq[i].trim() : i}</span><span>${resume[i] ? resume[i].trim() : 'aller à la séquence'}</span><span>${duree[i] ? duree[i].trim() : ''}</span>
+                    `;
+                    a.setAttribute('data-timecode', time[i].trim())
+                    ar.appendChild(a);
+                    a.addEventListener('click', e => {
+                        console.log(e.currentTarget.dataset.timecode / 1000, this.va);
+                        this.va.currentTime = e.currentTarget.dataset.timecode / 1000;
+                        this.va.play();
+                    })
+                }
+                this.media.appendChild(ar);
+            }
         }
         /**
          * Décomposer un objet et ses enfants
@@ -84,13 +114,15 @@ export class Notice {
          */
     setVideo(url, f) {
             const ar = document.createElement('article');
-            let vid = `<video controls class="media">
+            let vid = `<video controls class="media" id="va">
                     <source src="${url}" type="${f}">
                     Votre navigateur ne supporte pas ce format vidéo
                 </video>`;
             ar.innerHTML = vid;
             this.media.appendChild(ar);
+            this.setSequences();
             this.setMedia();
+            this.va = document.querySelector('#va');
         }
         /**
          * 
@@ -99,13 +131,15 @@ export class Notice {
          */
     setAudio(url, f) {
             const ar = document.createElement('article');
-            let aud = `<audio controls src="${url}" class="media">
+            let aud = `<audio controls src="${url}" class="media" id="va">
                         Votre navigateur ne supporte pas ce format audio
                 </audio>`;
 
             ar.innerHTML = aud;
             this.media.appendChild(ar);
+            this.setSequences();
             this.setMedia();
+            this.va = document.querySelector('#va');
         }
         /**
          * Afficher une image
@@ -134,5 +168,8 @@ export class Notice {
         this.media.appendChild(ar);
         // let img = `<img src="${url}" class="media">`;
         this.setMedia();
+    }
+    jumpSequence() {
+
     }
 }

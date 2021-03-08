@@ -448,6 +448,24 @@ audio.video {}
     transition: all .3s ease;
 }
 
+.sequence {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 80%;
+    margin: auto;
+    padding: 2px 10px;
+    /* justify-content: space-between; */
+}
+
+.sequence>span:nth-child(1),
+.sequence>span:nth-child(3) {
+    width: 10%;
+}
+
+.sequence>span:nth-child(2) {
+    width: 80%;
+}
+
 
 /* MEDIA QUERIES */
 
