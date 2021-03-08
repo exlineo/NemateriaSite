@@ -106,7 +106,6 @@ export class Collection {
                 let b = document.createElement('button');
                 b.textContent = s;
                 ar.appendChild(b);
-                console.log(s);
                 b.addEventListener('click', ()=>{
                     this.setNotices(this.setNoticesSeriees(s));
                 })
@@ -141,29 +140,57 @@ export class Collection {
                 const ar = document.createElement('article');
                 // this.listeObjet(n.metadonnees);
                 const a = document.createElement('a');
-                a.innerHTML = `<span><img src="assets/img/icones/icone_oeil.svg" alt="${db.title}" class="icone" ></span>`;
-                ar.style.backgroundImage = `url(${media.url})`;
+
+                // Adapter l'affichage en fonction du format du document
+                if(db.format){
+                    if (db.format.indexOf('image') != -1) {
+                        ar.style.backgroundImage = `url(${media.url})`;
+                    } else if (db.format.indexOf('application') != -1)  {
+                        ar.style.backgroundImage = `url(assets/img/icones/picto_doc.png)`;
+                    } else {
+                        // Ajouter des éléments au 
+                        // let c = document.createElement('div');
+                        if (db.format.indexOf('video') != -1) {
+                            a.innerHTML = this.setVideo(media.url, db.format);
+                        } else if (db.format.indexOf('audio') != -1) {
+                            a.innerHTML = this.setAudio(media.url, db.format);
+                        }
+                        // a.appendChild(c);
+                        a.addEventListener('mouseenter', (e)=>{
+                            e.currentTarget.childNodes[0].play();
+                        });
+                        a.addEventListener('mouseleave', (e)=>{
+                            e.currentTarget.childNodes[0].pause();
+                        })
+                    }
+                }
+
+                const pict = document.createElement('p');
+                pict.innerHTML = `<span><img src="assets/img/icones/icone_oeil.svg" alt="${db.title}" class="icone"></span>`;
+                // ar.style.backgroundImage = `url(${media.url})`;
                 const p = document.createElement('p');
                 p.setAttribute('title', db.title);
                 p.innerHTML = `<h3>${db.title}</h3><span>${db.description.substr(0,100)}...</span>`;
 
+                a.appendChild(pict);
                 ar.appendChild(p);
                 ar.appendChild(a);
                 this.n.appendChild(ar);
 
                 ar.addEventListener('click', ()=>{
-                    // console.log(this, this.o);
                     this.o.classList.toggle('vu');
                     this.notice = new Notice(this.o, n.metadonnees[0]);
                 })
             });
         }
+    setNoticeBg(){
+        let bg;
+    }
         /**
          * Lister et afficher le contenu d'un objet
          * @param {any} obj objet à tester pour créer une liste
          */
     listeObjet(obj) {
-        console.log(obj);
         let u = document.createElement('ul');
         if (!Array.isArray(obj) && typeof obj == 'object') {
             for (let i in obj) {
@@ -178,5 +205,39 @@ export class Collection {
         }
 
         return u;
+    }
+    /**
+         * Afficher une vidéo
+         * @param {string} url Lien de la vidéo
+         * @param {string} f Format de la vidéo
+         */
+        setVideo(url, f) {
+            return `<video class="media">
+                    <source src="${url}" type="${f}">
+                    Votre navigateur ne supporte pas ce format vidéo
+                </video>`;
+        }
+        /**
+         * 
+         * @param {string} url Adresse du média
+         * @param {string} f Format de l'audio
+         */
+    setAudio(url, f) {
+            return `<audio src="${url}" class="media">
+                        Votre navigateur ne supporte pas ce format audio
+                </audio>`;
+        }
+        /**
+         * Afficher un fichier PDF
+         * @param {string} url Lien vers le document
+         */
+    setPdf(url) {
+        return ``;
+    }
+    play(el){
+
+    }
+    pause(el){
+
     }
 }

@@ -26,7 +26,7 @@ export class Donnees {
     static menu = [];
 
     contact = {
-        mail: "simplon@fabriquenumerique.fr",
+        mail: "contact@exlineo.com",
         sujet: "Merci de remplir les champs requis",
         alerte: "Attention, il manque des informations dans votre formulaire",
         ok: "Message envoyé"

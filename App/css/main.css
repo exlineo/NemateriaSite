@@ -222,6 +222,15 @@ input {
     position: relative;
 }
 
+.notices a>video,
+.notices a>audio {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 10;
+    transition: transform .3s ease;
+}
+
 .notices a {
     display: flex;
     background: 50% no-repeat;
@@ -229,28 +238,41 @@ input {
     transition: all .3s ease;
     height: 100%;
     width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    /* margin-top: -100%; */
+    position: relative;
+    overflow: hidden;
 }
 
 .notices article:hover {
     background-size: 120%;
 }
 
-.notices a>span {
+.notices a>p {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    opacity: 0;
+    z-index: 20;
+    transition: opacity .3s ease;
+    margin: 0;
+    padding: 0;
+}
+
+.notices a>p>span {
     display: flex;
     margin: auto;
     padding: 20px 25px;
     background-color: rgba(0, 0, 0, .7);
     border-radius: 15%;
-    opacity: 0;
-    transition: opacity .3s ease;
 }
 
-.notices a:hover>span {
+.notices a:hover>p {
     opacity: 1;
+}
+
+.notices a:hover>video,
+.notices a:hover>audio {
+    transform: scale(1.2);
 }
 
 .notices article>p {
@@ -261,6 +283,7 @@ input {
     position: absolute;
     left: 0;
     bottom: 0;
+    z-index: 30;
 }
 
 
@@ -309,11 +332,14 @@ input {
     top: 60px;
     background-color: rgba(255, 255, 255, .95);
     transition: all .3s ease;
+    z-index: 100;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .notice>i {
     position: absolute;
-    z-index: 1;
+    z-index: 110;
 }
 
 .notice>i>img {
@@ -324,14 +350,41 @@ input {
 
 .notice>section {
     display: flex;
-}
-
-.notice>section.media {
     flex-flow: column nowrap;
 }
 
-.notice>section.donnees {
-    flex-flow: row wrap;
+.notice>section>article {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 20px;
+}
+
+.notice article>* {
+    box-sizing: border-box;
+}
+
+.notice #media {
+    border-right: black dashed 1px;
+    width: auto;
+    max-width: 65%;
+}
+
+
+/* ARTICLE DU MEDIA */
+
+.notice #media>article:nth-child(1) {
+    padding: 0;
+    text-align: center;
+}
+
+.notice #media video,
+.notice #media audio {
+    max-width: 100%;
+}
+
+.notice #donnees {
+    border-right: 10px solid yellowgreen;
 }
 
 

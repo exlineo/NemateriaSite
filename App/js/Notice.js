@@ -11,9 +11,8 @@ export class Notice {
             this.donnees.innerHTML = '';
 
             this.metas = metas; // Métadonnées de la notice
-            console.log(this.metas);
 
-            let f = this.metas.media.Format;
+            let f = this.metas.dublincore.format;
             if (f.indexOf('image') != -1) {
                 this.setImage(this.metas.media.url);
             } else if (f.indexOf('video') != -1) {
@@ -28,7 +27,6 @@ export class Notice {
             this.setDatas(this.metas.dublincore, "Métadonnées du média");
 
             for (let n in this.metas.nemateria) {
-                console.log(n);
                 this.setDatas(this.metas.nemateria[n], "Nemateria : " + n);
             }
         }
@@ -69,7 +67,6 @@ export class Notice {
     decortiqueObj(o, e = null) {
             const ul = document.createElement('ul');
             for (let i in o) {
-                console.log(i, o[i]);
                 if (typeof o[i] == 'object') {
                     this.decortiqueObj(o[i], i);
                 } else {
@@ -78,22 +75,6 @@ export class Notice {
                     ul.appendChild(li);
                 }
             };
-            // if (Array.isArray(o)) {
-            //     if (e) {
-            //         let li = document.createElement('li');
-            //         li.textContent = `${e} : ${o.toString()}`;
-            //         ul.appendChild(li);
-            //     };
-            // } else if (typeof o == 'object') {
-
-            // } else {
-            //     if (e) {
-            //         let li = document.createElement('li');
-            //         li.textContent = `${e} : ${o}`;
-            //         ul.appendChild(li);
-            //     };
-            // }
-            // ul.appendChild(li);
             return ul;
         }
         /**
@@ -102,23 +83,28 @@ export class Notice {
          * @param {string} f Format de la vidéo
          */
     setVideo(url, f) {
-        const ar = document.createElement('article');
-        let vid = `<video autoplay class="media">
+            const ar = document.createElement('article');
+            let vid = `<video controls class="media">
                     <source src="${url}" type="${f}">
                     Votre navigateur ne supporte pas ce format vidéo
                 </video>`;
-        ar.innerHTML = vid;
-        this.metas.appendChild(ar);
-        this.setMedia();
-    }
+            ar.innerHTML = vid;
+            this.media.appendChild(ar);
+            this.setMedia();
+        }
+        /**
+         * 
+         * @param {string} url Adresse du média
+         * @param {string} f Format de l'audio
+         */
     setAudio(url, f) {
             const ar = document.createElement('article');
             let aud = `<audio controls src="${url}" class="media">
-                            Votre navigateur ne supporte pas ce format audio
-                        </audio>`;
+                        Votre navigateur ne supporte pas ce format audio
+                </audio>`;
 
             ar.innerHTML = aud;
-            this.metas.appendChild(ar);
+            this.media.appendChild(ar);
             this.setMedia();
         }
         /**
@@ -126,6 +112,20 @@ export class Notice {
          * @param {string} url Lien vers le document
          */
     setImage(url) {
+            const ar = document.createElement('ar');
+            let img = new Image();
+            img.src = url;
+            img.className = 'media';
+            ar.appendChild(img);
+            this.media.appendChild(ar);
+            // let img = `<img src="${url}" class="media">`;
+            this.setMedia();
+        }
+        /**
+         * Afficher un fichier PDF
+         * @param {string} url Lien vers le document
+         */
+    setPdf(url) {
         const ar = document.createElement('ar');
         let img = new Image();
         img.src = url;
