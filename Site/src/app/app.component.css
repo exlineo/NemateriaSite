@@ -1,5 +1,6 @@
 header>article {
-    width: 50%;
+    width: 65%;
+    margin-left: auto;
 }
 
 hr {
@@ -35,4 +36,10 @@ p {
 
 footer a {
     color: white;
+}
+
+@media (max-width: 980px) {
+    header>article {
+        width: 85%;
+    }
 }

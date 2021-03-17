@@ -66,6 +66,8 @@ body>aside {
     width: 20vw;
     display: flex;
     flex-flow: column nowrap;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 body>main {
@@ -98,12 +100,12 @@ em {
 body>aside>section {
     justify-content: space-around;
     width: 100%;
-    height: 70vh;
+    height: 50vh;
 }
 
 nav {
     width: 100%;
-    height: 30vh;
+    min-height: 40vh;
 }
 
 nav>ul>li {
@@ -126,6 +128,8 @@ nav>ul {
     padding: 0;
     display: flex;
     flex-flow: column wrap;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 nav a {
@@ -134,7 +138,7 @@ nav a {
 }
 
 aside>input {
-    margin: 30px auto;
+    margin: 10px auto 40px;
     opacity: 1;
 }
 
@@ -383,6 +387,11 @@ input {
     max-width: 100%;
 }
 
+.notice iframe {
+    width: 100%;
+    height: 700px;
+}
+
 .notice #donnees {
     border-right: 10px solid yellowgreen;
 }
@@ -395,11 +404,17 @@ input {
     width: 100%;
 }
 
-img.media {}
+img.media {
+    max-width: 100%;
+}
 
-video.media {}
+video.media {
+    max-width: 100%;
+}
 
-audio.video {}
+audio.media {
+    max-width: 100%;
+}
 
 .icone {
     width: 24px;

@@ -161,10 +161,12 @@ export class Notice {
          */
     setPdf(url) {
         const ar = document.createElement('ar');
-        let img = new Image();
-        img.src = url;
-        img.className = 'media';
-        ar.appendChild(img);
+
+        const frame = document.createElement('iframe');
+        frame.className = 'media';
+        frame.src = url;
+
+        ar.appendChild(frame);
         this.media.appendChild(ar);
         // let img = `<img src="${url}" class="media">`;
         this.setMedia();

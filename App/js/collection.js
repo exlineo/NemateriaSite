@@ -14,14 +14,15 @@ export class Collection {
     f; // Champ de filter pour rechercher dans les notices
 
     constructor(n, s, c, o, f) {
-            this.n = n;
+            this.n = n; // Données 
             this.s = s;
             this.c = c;
-            this.o = o;
+            this.o = o; // Notice à afficher
             this.f = f;
             addEventListener('collection', (e) => {
                 this.index = parseInt(e.detail);
                 this.collection = Donnees.collections[this.index];
+                this.o.classList.remove('vu');
                 // Charger les notices
                 this.loadNotices();
                 // Afficher la collection
@@ -146,7 +147,7 @@ export class Collection {
                     if (db.format.indexOf('image') != -1) {
                         ar.style.backgroundImage = `url(${media.url})`;
                     } else if (db.format.indexOf('application') != -1)  {
-                        ar.style.backgroundImage = `url(assets/img/icones/picto_doc.png)`;
+                        ar.style.backgroundImage = `url(assets/img/icones/picto_docs.png)`;
                     } else {
                         // Ajouter des éléments au 
                         // let c = document.createElement('div');

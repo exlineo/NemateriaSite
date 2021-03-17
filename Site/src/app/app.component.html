@@ -8,10 +8,10 @@
 </head>
 
 <body>
+    <a href="#accueil" class="fleche gauche"></a>
     <main>
-        <aside>
+        <aside id="accueil">
             <header>
-                <article></article>
                 <article>
                     <hr>
                     <img [src]="dataServ.data.accueil.logo_petit">
@@ -32,8 +32,9 @@
             </footer>
         </aside>
         <app-presentation></app-presentation>
-        <app-projets></app-projets>
+        <app-projets id="projets"></app-projets>
     </main>
+    <a href="#projets" class="fleche droite"></a>
 </body>
 
 </html>

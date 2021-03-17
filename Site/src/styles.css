@@ -8,6 +8,8 @@ body {
     height: 100vh;
     font-size: 17px;
     font-family: 'Yanone Kaffeesatz', sans-serif;
+    overflow: hidden;
+    scroll-behavior: smooth;
 }
 
 * {
@@ -52,7 +54,7 @@ main>aside {
     display: flex;
     flex-flow: column wrap;
     width: 20vw;
-    padding: 0 15px;
+    padding: 0 15px 0 40px;
 }
 
 main>aside>* {
@@ -80,6 +82,7 @@ main>aside>footer {
 section {
     overflow: hidden;
     overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 footer {
@@ -89,13 +92,20 @@ footer {
 
 app-presentation {
     width: 35vw;
-    padding: 0 50px;
+    /* padding: 0 50px; */
+}
+
+app-presentation>section {
+    padding: 20px;
 }
 
 app-projets {
     width: 45vw;
     border-left: dashed thin black;
-    padding: 0 50px;
+}
+
+app-projets>section {
+    padding: 20px;
 }
 
 hr {
@@ -128,4 +138,75 @@ img {
 
 .petite {
     max-width: 150px;
+}
+
+.fleche {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: none;
+    padding: 6px;
+    position: absolute;
+    top: calc(50% - 10px);
+}
+
+.gauche {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    left: 10px;
+}
+
+.droite {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    right: 10px;
+}
+
+@media (max-width: 920px) {
+    main {
+        flex-flow: column wrap;
+    }
+    main>aside,
+    app-presentation {
+        width: 50vw;
+    }
+    app-projets {
+        width: 100vw;
+    }
+    app-presentation>section {
+        padding: 20px 40px 20px 20px;
+    }
+    app-projets>section {
+        padding: 20px 40px;
+    }
+    .fleche {
+        display: inline-block;
+    }
+}
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: yellow;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: yellowgreen;
 }
