@@ -24,7 +24,7 @@
             { "titre": "Nemateria || Administration", "infos": "Application pour l'administration des collections et des notices", "lien": "https://github.com/exlineo/NemateriaAdmin" },
             { "titre": "Nemateria || Serveur de données", "infos": "Application pour la sauvegarde et la distribution des collections et notices.", "lien": "https://github.com/exlineo/NemateriaRest" },
             { "titre": "Nemateria || Serveur OAI-PMH", "infos": "Serveur distribuant des données XML sur la norme OAI-PMH pour le moissonnage des notices hébergées. Il intègre la possibilité de moissonnage sur des namespaces étendus et persnnalisables (au delà du Dublin Core).", "lien": "https://github.com/exlineo/NemateriaOAI-PMH" },
-            { "titre": "Nemateria || Moissonnage", "infos": "Outil HTML pour le moissonnage de données OAI-PMH intégrant les namespaces de Nemateria (+ Dublinc Core).", "lien": "https://github.com/exlineo/NemateriaMoisson" },
+            { "titre": "Nemateria || Interprétation", "infos": "Outil HTML l'interprétation et la valorisation des collections et notices.", "lien": "http://nemateria.eu/app" },
             { "titre": "Nemateria || XMP (pour suite Adobe)", "infos": "Des fichiers pour étendre les possibilités des logiciels d'édition de la suite Adobe (Bridge notamment) utile pour renseigner les métadonnées des documents.", "lien": "https://github.com/exlineo/NemateriaXMP.git" }
         ]
     }

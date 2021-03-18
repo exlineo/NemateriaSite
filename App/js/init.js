@@ -2,7 +2,13 @@ import { Collection } from './Collection.js';
 import { Persistance } from './Persistance.js';
 
 window.addEventListener("load", function() {
+    // Lancement des classes
     launch();
+    // Gestion du menu burger
+    document.querySelector('.burger').addEventListener('click', (e) => {
+        e.currentTarget.classList.toggle('croix');
+        document.querySelector('main').classList.toggle('ouvert');
+    });
 });
 
 function launch() {
