@@ -30,6 +30,7 @@ export class Notice {
             for (let n in this.metas.nemateria) {
                 this.setDatas(this.metas.nemateria[n], "Nemateria : " + n);
             }
+            this.setAccordeon();
         }
         /**
          * Afficher les informations du document
@@ -37,7 +38,8 @@ export class Notice {
          */
     setMedia() {
             const ar = document.createElement('article');
-            const h3 = document.createElement('h3');
+            const h3 = document.createElement('button');
+            h3.className = 'accordeon';
             h3.textContent = "Informations sur le média";
             ar.appendChild(h3);
             ar.appendChild(this.decortiqueObj(this.metas.media));
@@ -48,7 +50,9 @@ export class Notice {
          */
     setDatas(o, t) {
             const ar = document.createElement('article');
-            const h3 = document.createElement('h3');
+            // const h3 = document.createElement('h3');
+            const h3 = document.createElement('button');
+            h3.className = 'accordeon';
             h3.textContent = t;
             ar.appendChild(h3);
             ar.appendChild(this.decortiqueObj(o));
@@ -96,6 +100,7 @@ export class Notice {
          */
     decortiqueObj(o, e = null) {
             const ul = document.createElement('ul');
+            ul.className = 'panneau';
             for (let i in o) {
                 if (typeof o[i] == 'object') {
                     this.decortiqueObj(o[i], i);
@@ -146,7 +151,7 @@ export class Notice {
          * @param {string} url Lien vers le document
          */
     setImage(url) {
-            const ar = document.createElement('ar');
+            const ar = document.createElement('article');
             let img = new Image();
             img.src = url;
             img.className = 'media';
@@ -160,7 +165,7 @@ export class Notice {
          * @param {string} url Lien vers le document
          */
     setPdf(url) {
-        const ar = document.createElement('ar');
+        const ar = document.createElement('article');
 
         const frame = document.createElement('iframe');
         frame.className = 'media';
@@ -173,5 +178,20 @@ export class Notice {
     }
     jumpSequence() {
 
+    }
+    setAccordeon() {
+        // ACCORDEON
+        const acc = this.n.getElementsByClassName("accordeon");
+        for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                let pan = this.nextElementSibling;
+                if (pan.style.maxHeight) {
+                    pan.style.maxHeight = null;
+                } else {
+                    pan.style.maxHeight = pan.scrollHeight + "px";
+                }
+            });
+        }
     }
 }

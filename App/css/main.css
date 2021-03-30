@@ -353,7 +353,7 @@ input {
     width: 80vw;
     height: calc(100vh - 60px);
     top: 60px;
-    background-color: rgba(255, 255, 255, .95);
+    background-color: rgb(255, 255, 255);
     transition: all .3s ease;
     z-index: 100;
     overflow-x: hidden;
@@ -374,6 +374,7 @@ input {
 .notice>section {
     display: flex;
     flex-flow: column nowrap;
+    width: 50%;
 }
 
 .notice>section>article {
@@ -381,6 +382,7 @@ input {
     display: flex;
     flex-flow: column nowrap;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 .notice article>* {
@@ -390,7 +392,50 @@ input {
 .notice #media {
     border-right: black dashed 1px;
     width: auto;
-    max-width: 65%;
+    width: 65%;
+    position: relative;
+}
+
+.notice .fleche {
+    position: absolute;
+    top: calc(50% - 40px);
+    background-color: white;
+    width: 30px;
+    height: 40px;
+    font-size: 40px;
+    font-weight: bold;
+    border: 0;
+    transition: all .3s ease;
+    z-index: 511;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 1px 0px 3px black;
+}
+
+.fleche img {
+    width: 100%;
+    height: 100%;
+}
+
+.notice .fleche:hover {
+    box-shadow: 2px 0px 5px black;
+    transform: scale(1.05);
+}
+
+.notice .fleche.gauche {
+    left: 0px;
+}
+
+.notice .fleche.droite {
+    right: 35%;
+}
+
+.notice .fleche.gauche:hover {
+    left: -5px;
+}
+
+.notice .fleche.droite:hover {
+    right: calc(35% - 5px);
 }
 
 
@@ -412,7 +457,13 @@ input {
 }
 
 .notice #donnees {
+    padding: 20px;
+    width: 33%;
     border-right: 10px solid yellowgreen;
+}
+
+.notice #donnees>article {
+    padding: 0;
 }
 
 
@@ -544,6 +595,47 @@ audio.media {
 }
 
 
+/* ACCORDEON CLASSIQUE */
+
+.accordeon {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 18px;
+    transition: 0.4s;
+}
+
+.active,
+.accordeon:hover {
+    background-color: #ccc;
+}
+
+.accordeon:after {
+    content: '\002B';
+    color: #777;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.panneau {
+    padding: 0 16px 0 32px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+
 /* MEDIA QUERIES */
 
 @media (max-width: 960px) {
@@ -581,6 +673,9 @@ audio.media {
         display: inline-block;
     }
 }
+
+
+/* MEDIA QUERIES */
 
 @media screen and (min-width: 1000px) and (max-width: 1400px) {
     .notices>section>article {
