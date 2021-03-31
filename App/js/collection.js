@@ -5,7 +5,8 @@ import PARAMS from './static/params.js';
 
 export class Collection {
 
-    index;
+    indexC; // Index de la collection
+    indexN; // Index de la notice en cours
     collection = {};
     n; // Notices HTML
     s; // L'entête des notices pour ecrires les séries
@@ -20,8 +21,8 @@ export class Collection {
             this.o = o; // Notice à afficher
             this.f = f;
             addEventListener('collection', (e) => {
-                this.index = parseInt(e.detail);
-                this.collection = Donnees.collections[this.index];
+                this.indexC = parseInt(e.detail);
+                this.collection = Donnees.collections[this.indexC];
                 this.o.classList.remove('vu');
                 // Charger les notices
                 this.loadNotices();
@@ -135,10 +136,13 @@ export class Collection {
          */
     setNotices(notices){
             this.n.innerHTML = '';
+            let i=0;
             notices.forEach(n => {
                 const db = n.metadonnees[0].dublincore;
                 const media = n.metadonnees[0].media;
                 const ar = document.createElement('article');
+                ar.dataset.i = i;
+                ++i;
                 // this.listeObjet(n.metadonnees);
                 const a = document.createElement('a');
 
@@ -179,10 +183,13 @@ export class Collection {
                 this.n.appendChild(ar);
 
                 ar.addEventListener('click', ()=>{
-                    this.o.classList.toggle('vu');
+                    this.slide();
+                    this.indexN = ar.dataset.i;
                     this.notice = new Notice(this.o, n.metadonnees[0]);
                 })
             });
+            // Activer le diaporama des notices
+            this.setDiaporama();
         }
     setNoticeBg(){
         let bg;
@@ -212,12 +219,12 @@ export class Collection {
          * @param {string} url Lien de la vidéo
          * @param {string} f Format de la vidéo
          */
-        setVideo(url, f) {
-            return `<video class="media">
-                    <source src="${url}" type="${f}">
-                    Votre navigateur ne supporte pas ce format vidéo
-                </video>`;
-        }
+    setVideo(url, f) {
+        return `<video class="media">
+                <source src="${url}" type="${f}">
+                Votre navigateur ne supporte pas ce format vidéo
+        </video>`;
+    }
         /**
          * 
          * @param {string} url Adresse du média
@@ -240,5 +247,27 @@ export class Collection {
     }
     pause(el){
 
+    }
+    /**
+     * Activer le diaporama avec les flêches de la notice
+     */
+    setDiaporama(){
+        const gauche = this.o.querySelector('.fleche.gauche');
+        const droite = this.o.querySelector('.fleche.droite');
+        gauche.addEventListener('click', (e)=>{
+            console.log(this.indexN);
+            if(this.indexN > 0) {
+                this.notice = new Notice(this.o, Donnees.notices[--this.indexN].metadonnees[0]);
+            }
+        });
+        droite.addEventListener('click', (e)=>{
+            console.log(this.indexN);
+            if(this.indexN < Donnees.notices.length) {
+                this.notice = new Notice(this.o, Donnees.notices[++this.indexN].metadonnees[0]);
+            }
+        });
+    }
+    slide(){
+        this.o.classList.toggle('vu');
     }
 }

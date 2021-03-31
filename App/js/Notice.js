@@ -13,6 +13,13 @@ export class Notice {
 
             this.metas = metas; // Métadonnées de la notice
 
+            const titre = document.createElement('h1');
+            titre.textContent = this.metas.dublincore.title;
+            this.donnees.appendChild(titre);
+            const description = document.createElement('blockquote');
+            description.textContent = this.metas.dublincore.description;
+            this.donnees.appendChild(description);
+
             let f = this.metas.dublincore.format;
             if (f.indexOf('image') != -1) {
                 this.setImage(this.metas.media.url);
@@ -31,6 +38,7 @@ export class Notice {
                 this.setDatas(this.metas.nemateria[n], "Nemateria : " + n);
             }
             this.setAccordeon();
+            console.log(this.parent, parent, Object.getPrototypeOf(this.constructor).name);
         }
         /**
          * Afficher les informations du document
@@ -106,7 +114,7 @@ export class Notice {
                     this.decortiqueObj(o[i], i);
                 } else {
                     let li = document.createElement('li');
-                    li.textContent = `${i} : ${o[i].toString()}`;
+                    li.innerHTML = `${i} : <strong>${o[i].toString()}</strong>`;
                     ul.appendChild(li);
                 }
             };
