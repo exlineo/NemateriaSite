@@ -12,13 +12,12 @@ export class Notice {
             this.donnees.innerHTML = '';
 
             this.metas = metas; // Métadonnées de la notice
-
+            // Affichage du titre du document
             const titre = document.createElement('h1');
             titre.textContent = this.metas.dublincore.title;
-            this.donnees.appendChild(titre);
+            this.media.appendChild(titre);
             const description = document.createElement('blockquote');
             description.textContent = this.metas.dublincore.description;
-            this.donnees.appendChild(description);
 
             let f = this.metas.dublincore.format;
             if (f.indexOf('image') != -1) {
@@ -31,6 +30,10 @@ export class Notice {
                 this.setPdf(this.metas.media.url);
             }
 
+            // Affichage de la description après le média 
+            this.media.appendChild(description);
+            // Afficher les données du média
+            this.setMedia();
             // Ecrire les données dans les médias
             this.setDatas(this.metas.dublincore, "Métadonnées du média");
 
@@ -46,10 +49,10 @@ export class Notice {
          */
     setMedia() {
             const ar = document.createElement('article');
-            const h3 = document.createElement('button');
-            h3.className = 'accordeon';
-            h3.textContent = "Informations sur le média";
-            ar.appendChild(h3);
+            const btn = document.createElement('button');
+            btn.className = 'accordeon';
+            btn.textContent = "Informations sur le média";
+            ar.appendChild(btn);
             ar.appendChild(this.decortiqueObj(this.metas.media));
             this.media.appendChild(ar);
         }
@@ -134,7 +137,6 @@ export class Notice {
             ar.innerHTML = vid;
             this.media.appendChild(ar);
             this.setSequences();
-            this.setMedia();
             this.va = document.querySelector('#va');
         }
         /**
@@ -151,7 +153,6 @@ export class Notice {
             ar.innerHTML = aud;
             this.media.appendChild(ar);
             this.setSequences();
-            this.setMedia();
             this.va = document.querySelector('#va');
         }
         /**
@@ -165,8 +166,6 @@ export class Notice {
             img.className = 'media';
             ar.appendChild(img);
             this.media.appendChild(ar);
-            // let img = `<img src="${url}" class="media">`;
-            this.setMedia();
         }
         /**
          * Afficher un fichier PDF
@@ -181,8 +180,6 @@ export class Notice {
 
         ar.appendChild(frame);
         this.media.appendChild(ar);
-        // let img = `<img src="${url}" class="media">`;
-        this.setMedia();
     }
     jumpSequence() {
 

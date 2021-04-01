@@ -24,6 +24,7 @@ export class Collection {
                 this.indexC = parseInt(e.detail);
                 this.collection = Donnees.collections[this.indexC];
                 this.o.classList.remove('vu');
+                document.querySelector('main').classList.remove('ouvert');
                 // Charger les notices
                 this.loadNotices();
                 // Afficher la collection

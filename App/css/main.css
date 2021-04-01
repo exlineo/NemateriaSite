@@ -9,8 +9,8 @@ body {
     margin: 0;
     font-variation-settings: 'wght' 500;
     font-weight: 500;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     font-size: 16px;
 }
@@ -201,6 +201,7 @@ input {
 .notices {
     flex-flow: column nowrap;
     width: 80vw;
+    overflow: hidden;
 }
 
 .notices>header {
@@ -360,6 +361,11 @@ input {
     overflow-y: auto;
 }
 
+.notice h1,
+.notice blockquote {
+    margin: 20px 0 10px;
+}
+
 .notice>i {
     position: absolute;
     z-index: 110;
@@ -381,7 +387,6 @@ input {
     width: 100%;
     display: flex;
     flex-flow: column nowrap;
-    padding: 20px;
     box-sizing: border-box;
 }
 
@@ -390,10 +395,12 @@ input {
 }
 
 .notice #media {
+    padding: 20px;
     border-right: black dashed 1px;
     width: auto;
     width: 65%;
     position: relative;
+    box-sizing: border-box;
 }
 
 .notice .fleche {
@@ -460,6 +467,7 @@ input {
     padding: 20px;
     width: 33%;
     border-right: 10px solid yellowgreen;
+    box-sizing: border-box;
 }
 
 .notice #donnees>article {
@@ -534,7 +542,7 @@ audio.media {
 }
 
 .ouvert {
-    width: 60vw;
+    width: 40vw;
 }
 
 .sequence {
@@ -646,7 +654,7 @@ audio.media {
         width: 100vw;
     }
     body>aside {
-        width: 40vw;
+        width: 60vw;
     }
     body>main>header {
         margin-top: 0px;
@@ -657,14 +665,26 @@ audio.media {
     }
     .notice {
         width: 100vw;
+        display: flex;
+        flex-flow: column nowrap;
     }
     .notices,
     .notices>header,
     .notices>section {
         width: 100vw;
     }
+    .notice #media,
+    .notice #donnees {
+        width: 100vw;
+        height: auto;
+        padding: 0 20px;
+        border-right: 0;
+    }
     .notices>section>article {
         width: 50%;
+    }
+    .notice .fleche.droite {
+        right: 0;
     }
     .vu {
         left: 0;
