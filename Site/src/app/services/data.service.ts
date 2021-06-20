@@ -16,5 +16,6 @@ export class DataService {
   }
   getData(){
     this.http.get<SiteI>("/assets/data/site.json").subscribe(s => this.data = s);
+    this.http.get('https://t395wb5odb.execute-api.eu-west-3.amazonaws.com/lancement/nemateria-site?TableName=nemateria-site').subscribe( w => console.log('données AWS', w))
   }
 }
