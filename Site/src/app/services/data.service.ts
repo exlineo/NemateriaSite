@@ -10,9 +10,10 @@ export class DataService {
 
   data:SiteI=<SiteI>{};
   email:string = "contact@exlineo.com";
+  langue:string = 'fr';
 
   httpOptions = {
-    headers: new HttpHeaders({ 
+    headers: new HttpHeaders({
       'Access-Control-Allow-Origin':'*'
     })
   };
@@ -30,15 +31,20 @@ export class DataService {
         }
     ],
     intro: "<p>Initiative privée.</p>"
-}
+};
 
   constructor(private http:HttpClient) {
     this.getData();
-    this.getAWSData();
+    // this.getAWSData();
+  }
+  // Changer de langue
+  setLangue(l:string){
+    this.langue = l;
+    this.getData();
   }
   // Récupérer les données locales en attendant
   getData(){
-    this.http.get<SiteI>("/assets/data/site.json").subscribe(s => this.data = s);
+    this.http.get<SiteI>(`/assets/data/${this.langue}/site.json`).subscribe(s => this.data = s);
   }
   // Récupérer les données depuis AWS
   getAWSData(){
@@ -46,6 +52,6 @@ export class DataService {
   }
   // Tester le post pour une admin
   postAWSData(){
-    this.http.post('https://2cit6jose0.execute-api.eu-west-3.amazonaws.com/nemateria-site-admin', this.page, this.httpOptions).subscribe(retour => console.log(retour));
+    this.http.post('https://2cit6jose0.execute-api.eu-west-3.amazonaws.com/nemateria-site-admin', JSON.stringify(this.page), this.httpOptions).subscribe(retour => console.log(retour));
   }
 }

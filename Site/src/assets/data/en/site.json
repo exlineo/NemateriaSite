@@ -1,0 +1,31 @@
+{
+  "accueil": {
+      "titre": "Nemateria",
+      "soustitre": "Free and Open Source tools for the extension, sharing and enhancement of shared data in art, culture and education.",
+      "separateur": " || ",
+      "logo_petit": "/assets/images/logos/Logo_Nemateria_2021_cube.png",
+      "logo_grand": "/assets/images/logos/Logo_Nemateria_2021.png",
+      "intro": "<p>Nemateria is a project developed by the company <a href='https://exlineo.com' target='_blank'>EXLINEO</a> with funding from the Nouvelle Aquitaine region.</p><p>It offers free and open source tools for managing and sharing digitized collections.</p><p>The code is shared on <a href='https://github.com/' target='_blank'>GITHUB.COM</a> under GPL3 licence.</p>",
+      "images": [{ "img": "/assets/images/logos/logo-naq.png", "titre": "Région Nouvelle Aquitaine", "lien": "https://www.nouvelle-aquitaine.fr" }]
+  },
+  "presentation": {
+      "entete": "/assets/images/martin-adams-unsplash.jpg",
+      "titre": "Nemateria",
+      "soustitre": "Tools for managing, disseminating and sharing digital collections",
+      "intro": "<p>Private initiative, the project has been developed since 2011 on the experiences of management and users of the Immaterielles.org project on the initiative of Mr. Gérard Perrier, consultant, museographer and archivist.</p><p>Nemateria is the synthesis of reflections and experiments on the uses of metadata, their management and their sharing. This work has led to technical and practical solutions allowing the extension of the OAI-PMH and Dublin Core standards for the enhancement of digitized collections.</p><p>Built on the experience of data users, it integrates a complete worflow making it possible to fill in data from notices and collections and to distribute them on the Web with dedicated free tools and to share them in compliance with the standards in force in the sector. These tools make it possible to extend the uses of cultural works or digitized archives and their metadata to broader sectors: tourism, education, industry, games, etc.</p><p>Fluid, adaptable, Nemateria's metadata management system allows you to manage the standards you want (METS, EAD, MARC...) and use only one tool to inform them all.</p>",
+      "infos": [{ "titre": "Tutoriels vidéo", "infos": "A full palette of tutorials will be available soon.", "lien": "https://youtube.com/playlist?list=PL713RdHI3Hr2FNXXP4-jP4S4KQQ4S7mbk" }]
+  },
+  "projets": {
+      "titre": "Accesing the project",
+      "soustitre": "The code, tutorials and documentation for each module is available on the Website <a href='http://github.com' target='_blank'>GITHUB.COM</a>.",
+      "separateur": " || ",
+      "intro": "<p>The entire project is made up of applications available for free on Github repositories. They can be downloaded and installed on your infrastructure...</p><p>If you want support, our team can deploy the solution for you or provide you with services in SaaS mode (Software as as Service), please contact us.</p><p>A serverless Cloud version is being finalized to optimize costs and reduce the ecological impact of applications.</p>",
+      "projets": [
+          { "titre": "Nemateria || Administration", "infos": "Application for the administration of collections and records", "lien": "https://github.com/exlineo/NemateriaAdmin" },
+          { "titre": "Nemateria || Serveur de données", "infos": "Application for the backup and distribution of collections and notices.", "lien": "https://github.com/exlineo/NemateriaRest" },
+          { "titre": "Nemateria || Serveur OAI-PMH", "infos": "Server distributing XML data on the OAI-PMH standard for harvesting hosted records. It integrates the possibility of harvesting on extended and customizable namespaces (beyond the Dublin Core).", "lien": "https://github.com/exlineo/NemateriaOAI-PMH" },
+          { "titre": "Nemateria || Interprétation", "infos": "HTML tools the interpretation and enhancement of collections and notices.", "lien": "http://nemateria.eu/app" },
+          { "titre": "Nemateria || XMP (pour suite Adobe)", "infos": "Files to extend the possibilities of editing software from the Adobe suite (Bridge in particular, free until 2018 version) useful for entering document metadata (all metadata are nested and harvested in documents).", "lien": "https://github.com/exlineo/NemateriaXMP.git" }
+      ]
+  }
+}

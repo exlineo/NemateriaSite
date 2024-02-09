@@ -10,6 +10,10 @@
 <body>
     <a href="#accueil" class="fleche gauche"></a>
     <main>
+      <div class="langues">
+        <a (click)="dataServ.setLangue('fr')" title="Version française"><img src="/assets/images/pictos/fr.png"></a>
+        <a (click)="dataServ.setLangue('en')" title="English version"><img src="/assets/images/pictos/uk.png"></a>
+      </div>
         <aside id="accueil">
             <header>
                 <article>
@@ -26,7 +30,7 @@
             <footer class="noir">
                 <article>
                     <p>
-                        Pour tous renseignements ou prestations
+                      <a href="https://exlineo.com" target="_blank" title="Copyright exlineo">© exlineo</a>
                     </p>
                 </article>
             </footer>

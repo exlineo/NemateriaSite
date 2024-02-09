@@ -115,7 +115,23 @@ hr {
     border-bottom: dashed black thin;
     margin: 20px 0 30px;
 }
-
+.langues{
+  position:absolute;
+  top:5px;
+  left:5px;
+  display: flex;
+  flex-flow:column nowrap;
+  height: fit-content;
+}
+.langues > a {
+  height: 25px;
+  cursor: pointer;
+}
+.langues img{
+  width:25px;
+  margin:0;
+  padding:0;
+}
 .noir {
     color: white;
     background-color: black;
